@@ -38,10 +38,13 @@ def save_to_list():
 
 def print_results():
     for i in range(len(result)):
-        result[i][2] = result[i][2].replace('\t','')
-        result[i][2] = result[i][2].replace('\n','')
-        grep_result = give_color(result[i][2], target)
-        print('%-5d: %-35s: %s'%(i, result[i][0], grep_result))
+        try:
+            result[i][2] = result[i][2].replace('\t','')
+            result[i][2] = result[i][2].replace('\n','')
+            grep_result = give_color(result[i][2], target)
+            print('%-5d: %-35s: %s'%(i, result[i][0], grep_result))
+        except(IndexError) as e:
+            pass
     return
 
 def open_vim():
